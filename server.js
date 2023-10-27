@@ -28,3 +28,16 @@ app.get('/auth', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+app.get('/callback', (req, res) => {
+    
+    const { token, error } = req.query;
+
+    if (error) {
+        return res.status(400).send(`Login error: ${error}`);
+    }
+
+    res.send('Callback processed!');
+
+});
